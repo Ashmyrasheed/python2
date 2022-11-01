@@ -45,7 +45,7 @@ while True:
         
         password = input('enter the password')
         
-        sql = 'INSERT INTO `employees`(`id`, `empcode`, `empname`, `designation`, `salary`, `companyname`, `phno`, `emailid`, `password`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)'
+        sql = 'INSERT INTO `employees`( `empcode`, `empname`, `designation`, `salary`, `companyname`, `phno`, `emailid`, `password`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)'
 
         
 
