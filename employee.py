@@ -69,6 +69,16 @@ while True:
 
         print('search employee')
 
+        empcode = input('enter the empcode')
+
+        sql = 'SELECT `id`,`empcode`,`empname`,`designation`,`salary`,`companyname`,`phno`,`emailid`,`password` FROM `employees` WHERE `empcode` = '+empcode
+
+        mycursor.execute(sql)
+
+        result = mycursor.fetchall()
+
+        print(result)
+
     elif(choice==4):
 
         print('update employee')
