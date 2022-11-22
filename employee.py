@@ -45,7 +45,7 @@ while True:
         
         password = input('enter the password')
         
-        sql = 'INSERT INTO `employees`(`id`, `empcode`, `empname`, `designation`, `salary`, `companyname`, `phno`, `emailid`, `password`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s)'
+        sql = 'INSERT INTO `employees`( `empcode`, `empname`, `designation`, `salary`, `companyname`, `phno`, `emailid`, `password`) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)'
 
         
 
@@ -59,19 +59,55 @@ while True:
 
     elif(choice==2):
 
-        print('view employee')
+        sql = 'SELECT * FROM `employees`'
+        mycursor.execute(sql)
+        result = mycursor.fetchall()
+        for i in result:
+            print(i)
 
     elif(choice==3):
 
         print('search employee')
 
+        empcode = input('enter the empcode')
+
+        sql = 'SELECT `id`,`empcode`,`empname`,`designation`,`salary`,`companyname`,`phno`,`emailid`,`password` FROM `employees` WHERE `empcode` = '+empcode
+
+        mycursor.execute(sql)
+
+        result = mycursor.fetchall()
+
+        print(result)
+
     elif(choice==4):
 
         print('update employee')
+        empcode = input('enter the empcode  to be updated')
+        empname = input('enter the empname to be updated')
+        designation = input('enter the designation to be updated')
+        salary = input('enter the salary to be updated')
+        companyname = input('enter the companyname to be updated')
+        phno = input('enter the phno to be updated')
+        email = input('enter the email to be updated')
+        password = input('enter the password to be updated')
+        
+        
+
+    
+        sql = "UPDATE `employees` SET `empcode`='"+empcode+"',`empname`='"+empname+"',`designation`='"+designation+"',`salary`='"+salary+"',`companyname`='"+companyname+"',`phno`='"+phno+"',`emailid`='"+email+"',`password`='"+password+"' WHERE `empcode`="+empcode
+        
+        mycursor.execute(sql)
+        mydb.commit()
+        print("data updated succesfully")
 
     elif(choice==5):
 
         print('delete employee')
+        empcode = input('enter the empcode')
+        sql = 'DELETE FROM `employees` WHERE `empcode` = '+empcode
+        mycursor.execute(sql)
+        mydb.commit()
+        print("data deleted succesfully")
 
     elif(choice==6):
 
